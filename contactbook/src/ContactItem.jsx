@@ -1,15 +1,18 @@
+// Denne komponent viser et enkelt kontaktkort og modtager et 'contact'-objekt via props.
+
 export default function ContactItem(props) {
     return (
 
 
-        <ul className="bg-green-200 text-black text-left p-6 mb-10 rounded-lg h-52">
-            <li> Name: {props.contact.firstName} {props.contact.lastName}</li>
-            <li> Email: {props.contact.email}</li>
-            <li> Phone: {props.contact.phone}</li>
-            <li> Company: {props.contact.company}</li>
-            <li> Position: {props.contact.position}</li>
+        <div className="bg-rose-200 p-8 rounded-lg shadow-md transition-transform transform hover:scale-105">
+            <h3 className="text-xl  font-bold text-gray-800">{props.contact.firstName} {props.contact.lastName}</h3>
 
-        </ul>
+            <p className="text-gray-600">Email: {props.contact.email}</p>
+            <p className="text-gray-600">Phone: {props.contact.phone}</p>
+            <p className="text-gray-600"> Company: {props.contact.company}</p>
+            <p className="text-gray-600"> Position: {props.contact.position}</p>
+
+        </div>
 
     );
 }

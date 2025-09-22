@@ -1,3 +1,7 @@
+// Denne 'Contact' klasse er en skabelon til at oprette nye kontakt-objekter.
+// Hvert objekt vil have egenskaber som fornavn, efternavn, email osv.
+
+
 export default class Contact {
     constructor(id, firstName, lastName, email, phone, company, position ) {
         this.id = id;
