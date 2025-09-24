@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
+// Modal-komponent til at tilføje ny kontakt
 const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
+    // State til alle inputfelter
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -8,9 +10,11 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
     const [company, setCompany] = useState('');
     const [position, setPosition] = useState('');
 
+    // Håndterer form submission
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Forhindrer reload
 
+        // Opretter nyt kontaktobjekt med unik id
         const newContact = {
             id: Date.now(),
             firstName,
@@ -21,8 +25,9 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
             position,
         };
 
-        onAddContact(newContact);
+        onAddContact(newContact); // Sender kontakt til parent-komponent (App.js)
 
+        // Nulstiller inputfelterne efter submit
         setFirstName('');
         setLastName('');
         setEmail('');
@@ -30,15 +35,17 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
         setCompany('');
         setPosition('');
 
-        onClose();
+        onClose(); // Lukker modal efter tilføjelse
     };
 
+    // Hvis modal ikke skal vises, returneres ingenting
     if (!isOpen) return null;
 
     return (
         <div className="modal-overlay fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center p-4 z-50">
             <div className="modal-container relative bg-white rounded-lg shadow-xl w-full max-w-md p-6">
 
+                {/* Knap til at lukke modal */}
                 <button
                     className="modal-close-btn absolute top-3 right-3 text-gray-500 hover:text-gray-800 transition-colors"
                     onClick={onClose}
@@ -48,9 +55,13 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
                     </svg>
                 </button>
 
+                {/* Modal overskrift */}
                 <h3 className="modal-title text-xl font-bold mb-4 text-center">Tilføj ny kontakt</h3>
 
+                {/* Formular til at indtaste kontaktoplysninger */}
                 <form onSubmit={handleSubmit} className="modal-form space-y-4">
+
+                    {/* Fornavn */}
                     <div className="form-group flex flex-col">
                         <label htmlFor="firstName" className="form-label text-sm text-gray-700 font-semibold mb-1">Fornavn:</label>
                         <input
@@ -62,6 +73,8 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
                             required
                         />
                     </div>
+
+                    {/* Efternavn */}
                     <div className="form-group flex flex-col">
                         <label htmlFor="lastName" className="form-label text-sm text-gray-700 font-semibold mb-1">Efternavn:</label>
                         <input
@@ -73,6 +86,8 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
                             required
                         />
                     </div>
+
+                    {/* Email */}
                     <div className="form-group flex flex-col">
                         <label htmlFor="email" className="form-label text-sm text-gray-700 font-semibold mb-1">Email:</label>
                         <input
@@ -84,6 +99,8 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
                             required
                         />
                     </div>
+
+                    {/* Telefon */}
                     <div className="form-group flex flex-col">
                         <label htmlFor="phone" className="form-label text-sm text-gray-700 font-semibold mb-1">Telefon:</label>
                         <input
@@ -95,6 +112,8 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
                             required
                         />
                     </div>
+
+                    {/* Firma */}
                     <div className="form-group flex flex-col">
                         <label htmlFor="company" className="form-label text-sm text-gray-700 font-semibold mb-1">Firma:</label>
                         <input
@@ -106,6 +125,8 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
                             required
                         />
                     </div>
+
+                    {/* Stilling */}
                     <div className="form-group flex flex-col">
                         <label htmlFor="position" className="form-label text-sm text-gray-700 font-semibold mb-1">Stilling:</label>
                         <input
@@ -118,6 +139,7 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
                         />
                     </div>
 
+                    {/* Knap til at submitte ny kontakt */}
                     <button
                         type="submit"
                         className="modal-submit-btn w-full bg-rose-400 hover:bg-rose-900 text-white font-bold py-2 rounded-md transition-colors"
