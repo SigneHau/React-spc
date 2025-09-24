@@ -7,7 +7,7 @@ function ClothesItem({clothes, addToCart}){
             <p>{props.clothes.description}</p>
             <p>Størrelse: {props.clothes.size}</p>
             <p>Farve: {props.clothes.color}</p>
-            <p>Pris: {props.clothes.price} kr</p>
+            <p>Pris: {props.clothes.price} kr.</p>
             <button onClick={() => addToCart(props.clothes.id)}>Tilføj til kurven</button>
         </div>
     )

@@ -1,1 +1,3 @@
-export default Kurv;
+export default function Kurv() {
+    
+}

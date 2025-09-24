@@ -8,7 +8,7 @@ export default function ClothesList (props) {
             {props.ClothesItem.map((clothes) => (
                 <ClothesItem
                 key= {clothes.id.toString}
-                clothes={clothes} />
+                clothes={clothes} /> 
             ))
             }
         </div>
