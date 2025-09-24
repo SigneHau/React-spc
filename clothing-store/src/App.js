@@ -1,22 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 
+const idClothes = [
+
+    new Clothes (1, 'Maria', 'Top', 'S', 850, 'Blå', 'En blå/hvid hæklet top lavet af bomuld.'),
+    new Clothes (2, 'Maria', 'Top', 'S', 850, 'Blå', 'En blå/hvid hæklet top lavet af bomuld.'),
+    new Clothes (3, 'Maria', 'Top', 'S', 850, 'Blå', 'En blå/hvid hæklet top lavet af bomuld.'),
+    new Clothes (4, 'Maria', 'Top', 'S', 850, 'Blå', 'En blå/hvid hæklet top lavet af bomuld.'),
+]
+
 function App() {
+  const [clothes, setClothes] = useState(idClothes);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Tøjbutik</h1>
+      
       </header>
     </div>
   );
