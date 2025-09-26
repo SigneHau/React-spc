@@ -1,6 +1,7 @@
 import "./Cart.css";
 
 export default function Cart({ cart, removeFromCart }) {
+    // Beregner totalprisen ved at lægge alle priser sammen
   const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (

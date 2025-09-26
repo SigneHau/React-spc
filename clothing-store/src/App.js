@@ -68,9 +68,11 @@ const idClothes = [
 ];
 
 function App() {
+  // State: clothes er alle varer, cart er indkøbskurven
   const [clothes, setClothes] = useState(idClothes);
   const [cart, setCart] = useState([]);
 
+  // Tilføjer et produkt til kurven og markerer det som "udsolgt"
   function addToCart(id) {
     const item = clothes.find((c) => c.id === id);
     if (item && !item.isSoldOut) {
@@ -78,7 +80,7 @@ function App() {
       setClothes(clothes.map((c) => c.id === id ? {...c, isSoldOut: true} : c));
     }
   }
-
+  // Fjerner et produkt fra kurven og markerer det som "på lager" igen
   function removeFromCart(id) {
     const item = cart.find((c) => c.id === id);
     if (item) {

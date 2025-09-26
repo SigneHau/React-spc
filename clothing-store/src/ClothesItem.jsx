@@ -1,5 +1,6 @@
 import "./ClothesItem.css";
 
+// Hvordan produktet skal se ud
 export default function ClothesItem({ clothes, addToCart }) {
   return (
     <div className="produkt">
