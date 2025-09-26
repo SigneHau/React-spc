@@ -1,0 +1,21 @@
+.produkt{
+ border: 1px solid black ;
+ margin: 10px; 
+ padding: 10px;
+}
+
+.add-cart{
+    font-weight: 500;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.udsolgt{
+    background: #ccc;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 12px;
+}
