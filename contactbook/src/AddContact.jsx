@@ -41,7 +41,7 @@ console.log(formValues);
         //     setCompany('');
         //     setPosition('');
 
-        //     onClose(); // Lukker modal efter tilføjelse
+            onClose(); // Lukker modal efter tilføjelse
     };
 
     // Generisk funktion til at opdatere state objektet

@@ -49,8 +49,8 @@ export default function Header() {
             </h2>
 
             {/* Viser den rigtige formular baseret på state */}
-            {activeForm === 'login' && <LogIn />}
-            {activeForm === 'signup' && <SignUp />}
+            {activeForm === 'login' && <LogIn onClose={handleCloseModal} />}
+            {activeForm === 'signup' && <SignUp onClose={handleCloseModal} />}
             
           </div>
         </div>

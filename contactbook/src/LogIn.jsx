@@ -6,7 +6,7 @@ import { SUPABASE_PROJECT_URL, SUPABASE_APIKEY } from './apiConfig';
 const supabase = createClient(SUPABASE_PROJECT_URL, SUPABASE_APIKEY )
 
 
-export default function LogIn() {
+export default function LogIn({ onClose }) {
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ export default function LogIn() {
     };
 
     async function logOn() {
-        console.log(userName, password)
+        //console.log(userName, password)
         const { data, error } = await supabase.auth.signInWithPassword({
             email: userName,
             password: password,
@@ -26,6 +26,8 @@ export default function LogIn() {
         if (data) {
             console.log("Du er logget ind");
             console.log("data", data);
+            // Luk modal
+            if (onClose) onClose();
         }
         else {
             console.log("Du har fejlet", error)

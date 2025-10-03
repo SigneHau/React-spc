@@ -6,7 +6,7 @@ import { SUPABASE_PROJECT_URL, SUPABASE_APIKEY } from './apiConfig.js';
 const supabase = createClient(SUPABASE_PROJECT_URL, SUPABASE_APIKEY)
 
 
-export default function SignUp() {
+export default function SignUp( { onClose }) {
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -26,6 +26,8 @@ export default function SignUp() {
         if (data) {
             console.log("Du er tilmeldt");
             console.log("data", data);
+            // Luk modal
+            if (onClose) onClose();
         }
         else {
             console.log("Du har fejlet", error)
