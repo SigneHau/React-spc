@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-// Modal-komponent til at tilføje ny kontakt
-const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
+//  tilføje ny kontakt
+const AddContact = ({ isOpen, onClose, onAddContact }) => {
     // State til alle inputfelter
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -14,9 +14,8 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
     const handleSubmit = (e) => {
         e.preventDefault(); // Forhindrer reload
 
-        // Opretter nyt kontaktobjekt med unik id
+        // Opretter nyt kontaktobjekt
         const newContact = {
-            id: Date.now(),
             firstName,
             lastName,
             email,
@@ -152,4 +151,4 @@ const MyModalComponent = ({ isOpen, onClose, onAddContact }) => {
     );
 };
 
-export default MyModalComponent;
+export default AddContact;
