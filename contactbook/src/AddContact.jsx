@@ -1,41 +1,65 @@
 import React, { useState } from 'react';
+import Contact from './Contact';
 
 //  tilføje ny kontakt
 const AddContact = ({ isOpen, onClose, onAddContact }) => {
     // State til alle inputfelter
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [company, setCompany] = useState('');
-    const [position, setPosition] = useState('');
+    //const [firstName, setFirstName] = useState('');
+    // const [lastName, setLastName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [phone, setPhone] = useState('');
+    // const [company, setCompany] = useState('');
+    // const [position, setPosition] = useState('');
+
+    const [formValues, setFormValues] = useState(
+        new Contact("", "", "", "", "", "")
+    )
 
     // Håndterer form submission
     const handleSubmit = (e) => {
-        e.preventDefault(); // Forhindrer reload
+       e.preventDefault(); // Forhindrer reload
 
-        // Opretter nyt kontaktobjekt
-        const newContact = {
-            firstName,
-            lastName,
-            email,
-            phone,
-            company,
-            position,
-        };
+console.log(formValues);
 
-        onAddContact(newContact); // Sender kontakt til parent-komponent (App.js)
+        //     // Opretter nyt kontaktobjekt
+        //     const newContact = {
+        //         firstName,
+        //         lastName,
+        //         email,
+        //         phone,
+        //         company,
+        //         position,
+        //     };
 
-        // Nulstiller inputfelterne efter submit
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setPhone('');
-        setCompany('');
-        setPosition('');
+        onAddContact(formValues); // ny kontact med den nye statevariabel som et object
 
-        onClose(); // Lukker modal efter tilføjelse
+        //     // Nulstiller inputfelterne efter submit
+        //     setFirstName('');
+        //     setLastName('');
+        //     setEmail('');
+        //     setPhone('');
+        //     setCompany('');
+        //     setPosition('');
+
+        //     onClose(); // Lukker modal efter tilføjelse
     };
+
+    // Generisk funktion til at opdatere state objektet
+    // virker kun hvis input har en name="attributs navn" (fra Todo objektet)
+    function handleInputChange(e) {
+        console.log(e.target.value);
+        console.log(e.target.name);
+
+        setFormValues((prev) => {
+            const updated = {
+                ...prev,
+                [e.target.name]: e.target.value,
+            };
+            // console.log("Updated form values:", updated);
+            return updated;
+        })
+    }
+
 
     // Hvis modal ikke skal vises, returneres ingenting
     if (!isOpen) return null;
@@ -65,9 +89,10 @@ const AddContact = ({ isOpen, onClose, onAddContact }) => {
                         <label htmlFor="firstName" className="form-label text-sm text-gray-700 font-semibold mb-1">Fornavn:</label>
                         <input
                             id="firstName"
+                            name="firstName"
                             type="text"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
+                            value={formValues.FirstName}
+                            onChange={handleInputChange}
                             className="form-input p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-900 focus:border-transparent"
                             required
                         />
@@ -78,9 +103,10 @@ const AddContact = ({ isOpen, onClose, onAddContact }) => {
                         <label htmlFor="lastName" className="form-label text-sm text-gray-700 font-semibold mb-1">Efternavn:</label>
                         <input
                             id="lastName"
+                            name="lastName"
                             type="text"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
+                            value={formValues.lastName}
+                            onChange={handleInputChange}
                             className="form-input p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-900 focus:border-transparent"
                             required
                         />
@@ -91,9 +117,10 @@ const AddContact = ({ isOpen, onClose, onAddContact }) => {
                         <label htmlFor="email" className="form-label text-sm text-gray-700 font-semibold mb-1">Email:</label>
                         <input
                             id="email"
+                            name="email"
                             type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={formValues.email}
+                            onChange={handleInputChange}
                             className="form-input p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-900 focus:border-transparent"
                             required
                         />
@@ -104,9 +131,10 @@ const AddContact = ({ isOpen, onClose, onAddContact }) => {
                         <label htmlFor="phone" className="form-label text-sm text-gray-700 font-semibold mb-1">Telefon:</label>
                         <input
                             id="phone"
+                            name="phone"
                             type="tel"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            value={formValues.phone}
+                            onChange={handleInputChange}
                             className="form-input p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-900 focus:border-transparent"
                             required
                         />
@@ -117,9 +145,10 @@ const AddContact = ({ isOpen, onClose, onAddContact }) => {
                         <label htmlFor="company" className="form-label text-sm text-gray-700 font-semibold mb-1">Firma:</label>
                         <input
                             id="company"
+                            name="company"
                             type="text"
-                            value={company}
-                            onChange={(e) => setCompany(e.target.value)}
+                            value={formValues.company}
+                            onChange={handleInputChange}
                             className="form-input p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-900 focus:border-transparent"
                             required
                         />
@@ -130,9 +159,10 @@ const AddContact = ({ isOpen, onClose, onAddContact }) => {
                         <label htmlFor="position" className="form-label text-sm text-gray-700 font-semibold mb-1">Stilling:</label>
                         <input
                             id="position"
+                            name='position'
                             type="text"
-                            value={position}
-                            onChange={(e) => setPosition(e.target.value)}
+                            value={formValues.position}
+                            onChange={handleInputChange}
                             className="form-input p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-900 focus:border-transparent"
                             required
                         />

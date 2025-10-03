@@ -11,7 +11,7 @@ export default function ContactList(props) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {props.contactItems.map((contact) => (
                     <ContactItem 
-                        key={contact.id?.toString()} 
+                        key={contact?.id?.toString()} 
                         contact={contact} 
                     />
                 ))}
