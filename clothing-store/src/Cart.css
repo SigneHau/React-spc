@@ -1,0 +1,37 @@
+.cart {
+  position: sticky;
+  top: 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  min-width: 250px;
+  height: 600px;
+}
+
+.cart h2{
+    font-weight: 500;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+.remove-button {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.cart-footer {
+    border-top: 1px solid #ccc;
+    margin-top: 15px;
+    padding-top: 10px;
+  }
+
+.pay{
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    border-radius: 20px;
+    border: none;
+    width: 170px;
+    height: 30px;
+}
+
+

@@ -1,0 +1,6 @@
+.clothes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 produkter pr. række */
+    gap: 20px;
+  }
+  
